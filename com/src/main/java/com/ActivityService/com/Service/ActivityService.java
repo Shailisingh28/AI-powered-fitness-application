@@ -1,5 +1,8 @@
 package com.ActivityService.com.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import com.ActivityService.com.DTO.ActivityRequest;
@@ -44,5 +47,10 @@ public class ActivityService {
         response.setUpdatedAt(activity.getUpdatedAt());
 
         return response;
+    }
+
+    public List<ActivityResponse> getActivityList(String userId) {
+        List<Activity> list = repository.findByUserId(userId);
+        return list.stream().map(this::mapToActivityResponse).collect(Collectors.toList());
     }
 }
