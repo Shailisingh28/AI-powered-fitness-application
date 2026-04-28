@@ -53,4 +53,9 @@ public class ActivityService {
         List<Activity> list = repository.findByUserId(userId);
         return list.stream().map(this::mapToActivityResponse).collect(Collectors.toList());
     }
+
+    public ActivityResponse getActivityById(String activityId) {
+        return repository.findById(activityId).map(this::mapToActivityResponse)
+                .orElseThrow(() -> new RuntimeException("Activity Not Found"));
+    }
 }
