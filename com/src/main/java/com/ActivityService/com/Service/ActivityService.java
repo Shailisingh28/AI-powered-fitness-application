@@ -16,9 +16,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ActivityService {
     private final ActivityRepository repository;
+    private final ValidateUser validate;
 
     public ActivityResponse trackActivity(ActivityRequest request) {
-
+        boolean isvaliduser = validate.validateUser(request.getUserId());
+        if (!isvaliduser) {
+            throw new RuntimeException("Invalid User");
+        }
         Activity activity = Activity.builder()
                 .userId(request.getUserId())
                 .type(request.getType())
