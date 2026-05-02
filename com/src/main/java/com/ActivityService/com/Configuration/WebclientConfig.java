@@ -1,4 +1,4 @@
-package com.ActivityService.com.Config;
+package com.ActivityService.com.Configuration;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
