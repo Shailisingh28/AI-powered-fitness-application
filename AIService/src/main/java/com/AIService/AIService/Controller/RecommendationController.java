@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.AIService.AIService.Model.Recommendation;
 import com.AIService.AIService.Service.RecommendationService;
 
-import lombok.RequiredArgsConstructor;
-
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/recommendations")
 public class RecommendationController {
     private final RecommendationService recommendationService;
+
+    public RecommendationController(RecommendationService recommendationService) {
+        this.recommendationService = recommendationService;
+    }
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Recommendation>> getRecommendations(@PathVariable String userId) {

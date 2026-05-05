@@ -1,4 +1,4 @@
-package com.ActivityService.com.Configuration;
+package com.AIService.AIService.Configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
